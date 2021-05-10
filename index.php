@@ -126,7 +126,7 @@
   </p>
 </div>
             </p>
-          <?php endif; ?>
+      
     <!-- カテゴリーの出力 -->
           <div class="text-content">
             <p class="article__date"><?php echo get_the_date('Y-m-d'); ?></p>
