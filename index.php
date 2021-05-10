@@ -125,6 +125,50 @@
     <!-- カテゴリーアーカイブページへのリンク -->
   </p>
 </div>
+            </p>
+          <?php endif; ?>
+    <!-- カテゴリーの出力 -->
+          <div class="text-content">
+            <p class="article__date"><?php echo get_the_date('Y-m-d'); ?></p>
+            <h3 class="article__title">
+              <?php
+              if (mb_strlen($post->post_title, 'UTF-8') > 30) {
+                $title = mb_substr($post->post_title, 0, 30, 'UTF-8');
+                echo $title . '…';
+              } else {
+                echo $post->post_title;
+              }
+              ?>
+<!-- タイトルの文字数が30文字以降は表示せずに、最後に「…」をつける -->
+            </h3>
+            <div class="article-tags">
+              <p class="article-tags__inner">
+                <?php $posttags = get_the_tags();
+                if ($posttags) {
+                  foreach ($posttags as $tag) {
+                    echo '<span class="tag-span">' . $tag->name . '</span>';
+                  }
+                } ?>
+    <!-- リンクの無いタグをspanタグで囲って出力 -->
+              </p>
+            </div>
+          </div>
+        </a>
+      <?php endwhile; ?>
+    <?php endif; ?>
+    <?php wp_reset_postdata(); ?>
+  </div>
+  <p class="news-articles_link">
+    <?php
+    // 指定したカテゴリーの ID を取得
+    $category_id = get_cat_ID('interview');
+    // このカテゴリーの URL を取得
+    $category_link = get_category_link($category_id);
+    ?>
+    <a href="<?php echo esc_url($category_link); ?>" class="news-articles_link_text">インタビューの一覧はこちら→</a>
+    <!-- カテゴリーアーカイブページへのリンク -->
+  </p>
+</div>
               <p class="news-category">
                 new
               </p>
