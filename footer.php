@@ -1,4 +1,4 @@
-<<footer id="footer">
+<footer id="footer">
   <div class="footer-nav__title">
     <a href="<?php echo esc_url(home_url('/')); ?>" class="article-logo">
       <?php bloginfo('name'); ?>
